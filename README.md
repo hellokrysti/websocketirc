@@ -6,6 +6,7 @@ Using the term widgetized, even if people kinda overflow from what I see a widge
 This has been tested on an IRC server running UnrealIRCd 6 with websocket module enabled, antirandom module dialed down and appropriate text websocket listening block.
 
 In your conf/unrealircd.conf
+```
 listen {
     ip *;
     port 8000;
@@ -19,3 +20,4 @@ listen {
         options { no-client-certificate; };
     };
 }
+```

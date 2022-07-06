@@ -2,10 +2,6 @@
 	outline: none;
 }
 .irc {
-    /* 
-    box-shadow: rgb(0 218 255 / 79%) 0px 0px 20px 0px;
-    background:linear-gradient(#000000, #000000) padding-box, linear-gradient(115deg, #227076, black 50%, #1e6872) border-box;
-    */
     border:2px solid transparent;
     border-width:2px;
     margin-left:0.3em;

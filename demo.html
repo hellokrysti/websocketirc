@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Websocket IRC</title>
+    <link rel="stylesheet" href="css/irc.css">
+  </head>
+  <body>
+    <div class="irc" id="irc"></div>
+  <script>
+  function generateIdent() {
+    if(localStorage.ident) {
+      return localStorage.ident;
+    }
+    var rident = Math.random().toString(36).substring(2,10);
+    localStorage.setItem('ident',rident);
+    return rident;
+  }
+  var ircConfig = {
+    target:"irc",
+    network:"the Krysti.Engineer Live Chat",
+    server:"irc.wrestlingnewssource.com",
+    port:8000,
+    nicklen:30,
+    channel:"#krysti",
+    ident:generateIdent(),
+    guest_prefix:"",
+    max_themes:8,
+    default_theme:1,
+    max_video_width:'240px',
+    max_image_width:'120px',
+    output_height:'45vh',
+    output_fc:'#d0d0d0', // font color
+    input_bg:'rgb(0 0 0 / 49%)'
+  }
+  </script>    
+	<script src="js/irc.min.js"></script>
+  </body>
+</html>

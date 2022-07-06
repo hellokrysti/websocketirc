@@ -1,0 +1,251 @@
+.irc input:focus, .irc textarea:focus, .irc select:focus{
+	outline: none;
+}
+.irc {
+    border:2px solid transparent;
+    border-width:2px;
+    margin-left:0.3em;
+}
+.y { color:yellow;font-weight:bold; }
+.g { color:cyan;font-weight:bold; }
+.connect_irc {
+    display:flex;
+    height:100%;
+    align-items:center;
+    justify-content:center;
+    align-content:center;
+    flex-wrap:nowrap;
+    flex-direction:column;
+}
+.connect_irc > * { margin:5px; }
+.output {
+    overflow-y:scroll;
+    overflow-wrap:anywhere;
+    padding:5px 5px 0 5px;
+    display:none;
+    font-family:Montserrat, "Open Sans";
+    font-size:14px;
+    line-height:1.02em;
+    /* color:#d0d0d0; */
+}
+.output::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.output::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+.output::-webkit-scrollbar-thumb {
+	/* background: #157a8a;
+	background-image: -webkit-linear-gradient(180deg,rgb(49 101 140 / 80%), rgb(46 43 236 / 40%) 50%, transparent, transparent);  
+	border: 0px none #ffffff; */
+	border-radius: 50px;
+}
+.output::-webkit-scrollbar-track {
+	background: transparent;
+	/* border: 1px solid #1f1f1f; */
+	border-radius: 47px;
+}
+.output::-webkit-scrollbar-corner {
+	background: transparent;
+}
+.output > div {
+	display:grid;
+	grid-template-columns:auto 1fr;
+	margin-bottom:2px;
+}
+.who {
+	display: flex;
+    flex-wrap: wrap;
+    justify-content:space-between;
+}
+.who > div { padding:2px; }
+.output > div > div:first-child {
+	margin-right:2px;
+	white-space:nowrap; 
+}
+.shared_video { max-width:320px;max-height:240px; }
+.shared { margin-bottom:.5em;max-width:120px;max-height:90px; }
+.ircsend button { border-radius:0px; }
+.irctopic {
+	min-height:1em;
+	line-height:1em;
+	width:auto;
+	display:none;
+	padding-left:2px;
+	letter-spacing:1px;
+	font-size:60%;
+}
+.ircstatus {
+	width:auto;
+	line-height:1em;
+	height:2.5em;
+	display:none;
+	font-family:monospace;
+	font-size:10px;
+	align-items:center;
+	border: 2px solid transparent; 
+	border-width:2px;
+	margin-top:5px;
+	margin-left:5px;
+	margin-right:5px;
+	color:#d0d0d0;
+}
+.ircstatus > div {
+	padding-left:5px;
+}
+.ircstatus div:nth-child(4) {
+	margin-left:auto;
+	width:min-content;			
+}
+.ircstatus div:last-child {
+	width:min-content;
+	margin-right:5px;
+}
+#irc_connecting {
+    box-shadow: inset 0px 1px 0px 0px #9a26e3;
+    background: linear-gradient(to bottom, #8d00fe 5%, #3c165a 100%);
+    background-color: #000000;
+    border-radius: 25px;
+    border: 1px solid #5b1f86;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 6px 24px;
+    text-decoration: none;
+    text-shadow: 0px 2px 0px #000000;
+}
+#irc_connecting:hover {
+    background: linear-gradient(to bottom, #390064 5%, #9561bf 100%);
+    background-color: #000000;
+}
+.send_text_irc {
+    width:100%;
+    padding:5px;
+    border:0;
+}
+.itools {
+	display:none;
+	justify-content:flex-end;
+}
+.itools > span { cursor:pointer; }
+.itools #iup, .itools #idown { font-size:1em; }
+/* Theme classes */
+.sbar0 {
+	background: linear-gradient(#000000, #000000 87%) padding-box, linear-gradient(90deg, #00E8FB, black 11%, black 89%, #00e3ff) border-box;
+}
+.sbar1 {
+	background: linear-gradient(#000000, #000000 87%) padding-box, linear-gradient(90deg, purple, black 11%, black 89%, hotpink) border-box;	
+}
+.sbar2 {
+	background: linear-gradient(#000000, #000000 87%) padding-box, linear-gradient(90deg, red, black 11%, black 89%, yellow) border-box;	
+}
+.sbar3 {
+	background: linear-gradient(#321ecc, #106e91 87%) padding-box, linear-gradient(26deg, #383838, #1a06fa 11%, #309fa0 89%, #257f93) border-box;
+}
+.sbar4 {
+	background-image: linear-gradient(rgb(0 255 0 / 27%) -0.1em, transparent 0.1em), linear-gradient(90deg, rgb(0 255 0 / 15%) 0.1em, transparent 0.1em);
+    background-size: 0.5em 0.5em;
+    border: 2px lime solid;
+    border-image: repeating-linear-gradient( 343deg, #22ff00, #2aac10 15%, #44ff00 13%, #4b9321 50%) 10;
+}
+.sbar5 {
+	background: #2e2ee0;
+	margin:0;
+}
+.sbar5 > div {
+	font-family:"Lucida Console", Monaco, monospace;
+	font-size:14px;
+	font-weight:600;
+	color:#A0A0FF;	
+}
+.sbar6 {
+    background: linear-gradient(#000000, #000000) padding-box, linear-gradient(159deg, rgba(255,0,0,1) 0%, rgba(255,134,0,1) 14%, rgba(255,252,0,1) 32%, rgba(13,255,0,1) 50%, rgba(0,0,255,1) 68%, rgba(188,0,255,1) 83%, rgba(255,0,242,1) 100%) border-box;
+    margin: 0;
+    border-right: 0;
+    border-left: 0;
+}
+.sbar7 {
+	background: none;
+    border-width: 4px;
+    border-image: repeating-linear-gradient( 133deg, #4b0101, #c00000 21%, #010000 24%) 7;
+}
+.sbox0 {
+    background:linear-gradient(#000000, #000000) padding-box, linear-gradient(115deg, #227076, black 50%, #1e6872) border-box;
+}
+.sbox1 {
+    background:linear-gradient(#000000, #000000) padding-box, linear-gradient(115deg, purple, black 50%, hotpink) border-box;
+}
+.sbox2 {
+    background:linear-gradient(#000000, #000000) padding-box, linear-gradient(115deg, red, black 50%, yellow) border-box;
+}
+.sbox3 {
+	background: linear-gradient(310deg, #071a42, #000000) padding-box, linear-gradient(115deg, #211f96, black 50%, #409da1) border-box;
+}
+.sbox4 {
+	border-image: repeating-linear-gradient( 343deg, #22ff00, #2aac10 15%, #44ff00 13%, #4b9321 50%) 10;
+	background: linear-gradient(rgb(0 255 0 / 11%) -0.1em, transparent 0.1em), linear-gradient(90deg, rgb(0 255 0 / 5%) 0.1em, transparent 0.1em);
+    background-size: 0.4em 0.4em
+}
+.sbox5 {
+	border: 5px solid #a5a5ff;
+    outline: 1px solid #000000;
+    outline-offset: -5px;
+	background: #4343e7;
+}
+.sbox5 .output, .sbox5 span {
+	font-family:"Lucida Console", Monaco, monospace;
+	font-weight:600;
+	color:#A0A0FF;
+	font-size:14px;
+}
+.sbox5 .send_text_irc {
+	background:#4343e7!important;
+	font-family:"Lucida Console", Monaco, monospace;
+	font-weight:600;
+	color:#A0A0FF!important;	
+}
+.sbox6 {
+	background: linear-gradient(#000000, #000000) padding-box, linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(255,134,0,1) 14%, rgba(255,252,0,1) 32%, rgba(13,255,0,1) 50%, rgba(0,0,255,1) 68%, rgba(188,0,255,1) 83%, rgba(255,0,242,1) 100%) border-box;
+}
+.sbox7 {
+	background:none;
+	border-image: repeating-linear-gradient( 122deg, #4b0101 20%, #c00000 29%, #ff6060 25%, #ffc0c0 5%) 10;
+}
+.oscroll0::-webkit-scrollbar-thumb {
+	background: #157a8a;
+    background-image: -webkit-linear-gradient(180deg,rgb(49 101 140 / 80%), rgb(46 43 236 / 40%) 50%, transparent, transparent);	
+}
+.oscroll1::-webkit-scrollbar-thumb {
+    background: hotpink;
+    background-image: -webkit-linear-gradient(170deg,purple, hotpink 50%, transparent, transparent);
+}
+.oscroll2::-webkit-scrollbar-thumb {
+	background: #dfef4b;
+    background-image: -webkit-linear-gradient(349deg,red, yellow 66%, transparent, transparent);
+}
+.oscroll3::-webkit-scrollbar-thumb {
+    background: #4be3ef;
+    background-image: -webkit-linear-gradient(167deg,#000dff, #8382d4 66%, transparent, transparent);
+}
+.oscroll4::-webkit-scrollbar-thumb {
+	background: #288a15;
+    background-image: -webkit-linear-gradient(181deg,rgb(79 140 49 / 44%), rgb(25 120 22 / 40%) 50%, transparent, transparent);
+}
+.oscroll5::-webkit-scrollbar-thumb {
+	background: #3535bd;
+    background-image: -webkit-linear-gradient(180deg,rgb(49 101 140 / 80%), rgb(46 43 236 / 40%) 50%, transparent, transparent);	
+}
+.oscroll6::-webkit-scrollbar-thumb {
+	background: hotpink;
+	background-image: linear-gradient(180deg, rgba(255,0,0,1) 0%, rgba(255,134,0,1) 14%, rgba(255,252,0,1) 32%, rgba(13,255,0,1) 50%, rgba(0,0,255,1) 68%, rgba(188,0,255,1) 83%, rgba(255,0,242,1) 100%);	
+}
+.oscroll7::-webkit-scrollbar-thumb {
+	background: #640909;
+    background-image: -webkit-linear-gradient(6deg,maroon, #7a1212 50%, transparent, transparent);	
+}
+/* End theme classes */

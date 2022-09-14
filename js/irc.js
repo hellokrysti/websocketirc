@@ -300,8 +300,16 @@ function onOpen(evt) {
 	}
     iot.scrollTop = iot.scrollHeight;
     writeToScreen("Welcome to " + ircConfig.network + " (IRC Network)");
-    doSend("user "+ircConfig.ident+" * * :"+ircConfig.network);
+    if(ircConfig.ircv3 == true) {
+		doSend("cap ls 302");
+		doSend("cap list");
+		doSend("cap req :batch message-tags account-tag server-time draft/chathistory");
+	}
+    doSend("user "+ircConfig.ident+" * 0 :"+ircConfig.network);
     doSend("nick "+inp.value);
+    if(ircConfig.ircv3 == true) {
+		doSend("cap end");
+	}
     s_nick.innerHTML = inp.value;
 	if(inp.value.indexOf(ircConfig.guest_prefix+"Guest_")==-1) {
 		localStorage.setItem('nickname',inp.value);
@@ -340,13 +348,24 @@ function handleBinaryInput(event) {
     var raw = fileReader.result;
     process(raw);
 }
-
 function process(rawData) {
+	var ircv3s, ircv3info;
+	if(rawData.substring(0,1) == "@") {
+		ircv3s = rawData.split(" ");
+		ircv3info = ircv3s[0];
+		ircv3s.shift()
+		// Now that we have this information you could implement a timestamp on output
+		console.log("IRCv3 info", ircv3info);
+		rawData = ircv3s.join(" ");
+	}
     if (rawData.indexOf("PING") == 0) {
        pongResponse = rawData.replace("PING","PONG");
        websocket.send(pongResponse);
     } else if (rawData.indexOf("001") > -1) {
        doSend("join "+ircConfig.channel);
+       if(ircConfig.ircv3 == true) {
+		   doSend("CHATHISTORY LATEST "+ircConfig.channel+" * " + ircConfig.playback);
+	   }
     } else if (rawData.substring(0,5) == "ERROR") {
         writeToScreen('<span style="color:red;font-weight:bold;">'+rawData.substring(6).replace(/[:]/g,'')+'</span>');
         return;
@@ -369,7 +388,7 @@ function process(rawData) {
 					var whoback = direct[0].substring(0,direct[0].indexOf('!'));
 					switch(cparams[3]) {
 						case "VERSION": {
-							doSend('NOTICE ' + whoback + ' :' + String.fromCharCode(1) + 'VERSION ' + 'https://krysti.engineer Websocket IRC v0.1' + String.fromCharCode(1));
+							doSend('NOTICE ' + whoback + ' :' + String.fromCharCode(1) + 'VERSION ' + 'https://krysti.engineer Websocket IRC v0.2' + String.fromCharCode(1));
 							break;
 						}
 						case "PING": {
@@ -395,6 +414,11 @@ function process(rawData) {
             writeToScreen('<span>'+extra_bit+msg.substring(2)+'</span>');
             break;
         }
+        case "BATCH": {
+			//console.log("This is a batch: " + msg);
+			//doSend("BATCH " + spaced[2] + " chathistory " + ircConfig.channel);
+			break;
+		}
         case "353": {
 			var who = "<div class=\"who\" id=\"who\"><div>Users Online: </div>";
 			var person = msg.split(" ");

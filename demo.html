@@ -20,10 +20,12 @@
   }
   var ircConfig = {
     target:"irc",
-    network:"The Change This Network Chat",
-    server:"irc.yourserver.com",
+    network:"The ChangeMe Network",
+    server:"irc.changeme.com",
     port:8000,
     nicklen:30,
+    ircv3:false,
+    playback:50, // Related to IRCv3 chathistory command max privmsgs
     channel:"#changeme",
     ident:generateIdent(),
     guest_prefix:"",

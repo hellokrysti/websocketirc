@@ -27,4 +27,3 @@ listen {
     };
 }
 ```
-Full instructions: https://krysti.engineer/websocketirc/
